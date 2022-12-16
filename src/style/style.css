@@ -2,9 +2,13 @@
 @import url(https://fonts.googleapis.com/css2?family=Nunito&family=Open+Sans&family=Quicksand&family=Saira:ital,wght@1,300;1,400&display=swap);
 
 :root {
-  --primary-bg-color: #ffffff;
+  --primary-bg-color: #262626;
   --secondary-bg-color: #e4f7ff;
-  --terinary-bg-color: #1789c9;
+  --terinary-bg-color: #171717;
+
+  --primary-color: #000000;
+  --secondary-color: #1789c9;
+  --terinary-color: #ffffff;
 
   --primary-red-accent: #ffd9dd;
   --secondary-red-accent: #dc2626;
@@ -21,10 +25,6 @@
 
   --primary-saffron-accent: #ffccb3;
   --secondary-saffron-accent: #ff9966;
-
-  --primary-color: #000000;
-  --secondary-color: #1789c9;
-  --terinary-color: #ffffff;
 }
 
 a {
@@ -49,7 +49,6 @@ button {
 
 .container {
   height: 100vh;
-  width: 55%;
   display: flex;
   flex-direction: column;
 }
@@ -60,8 +59,7 @@ button {
   font-size: 24px;
   font-weight: 600;
   height: 60px;
-  width: 55%;
-  background-color: var(--terinary-color);
+  background-color: var(--terinary-bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
