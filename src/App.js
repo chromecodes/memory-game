@@ -6,7 +6,22 @@ const Pokedex = require("pokeapi-js-wrapper");
 
 const P = new Pokedex.Pokedex();
 
-P.getPokemonByName("eevee").then(function (response) {
+(async () => {
+  const golduck = await P.getPokemonByName("golduck");
+  console.log(golduck);
+})();
+
+P.getBerryByName(["cheri", "chesto", 5]).then(function (response) {
+  // `response` will be an Array containing 3 Objects
+  // response.forEach((item) => {console.log(item.size)}) // 80,50,20
+  console.log(response);
+});
+
+const interval = {
+  offset: 34,
+  limit: 10,
+};
+P.getPokemonsList(interval).then(function (response) {
   console.log(response);
 });
 
