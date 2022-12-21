@@ -45,7 +45,7 @@ export const infoApi = (() => {
       api.data.push(temp);
     }
 
-    console.log(api.data);
+    return api.data;
   }
 
   return { api, offset, limit, fetchData };
