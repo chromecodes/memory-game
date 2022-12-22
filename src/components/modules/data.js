@@ -41,10 +41,11 @@ export const infoApi = (() => {
     offset.resetVal();
 
     for (let i = 1; i <= limit.val; i++) {
+      console.log(i);
       const temp = await P.getPokemonByName(offset.val + i);
       api.data.push(temp);
     }
-
+    console.log(api.data);
     return api.data;
   }
 
