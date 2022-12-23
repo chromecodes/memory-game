@@ -15,17 +15,15 @@ function App() {
   const resetData = () => {
     setData(getData);
   };
+  ascsac;
+  ascsac;
+  ascascasc;
+
   return (
     <div className='app'>
       <Header />
       <Game />
-      <button
-        onClick={(e) => {
-          resetData(e);
-        }}
-      >
-        RESET
-      </button>
+      <button onClick={resetData}>RESET</button>
       <Footer />
     </div>
   );
