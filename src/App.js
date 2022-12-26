@@ -3,45 +3,44 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import { infoApi } from "./components/modules/data";
 import React, { useEffect, useState } from "react";
-
-async function getData() {
-  let data = await infoApi.fetchData();
-  console.log(data);
-  return data;
-}
+import Loading from "./components/Loading";
 
 function App() {
   const [data, setData] = useState(1);
+  const [score, scoreUp] = useState(0);
 
-  const resetData = () => {
-    setData(getData);
+  const filterData = (dumps) => {
+    let temp2 = [];
+    dumps.forEach((dump) => {
+      temp2.push({
+        id: dump.id,
+        name: dump.name,
+        img: dump.sprites.other["official-artwork"].front_default,
+      });
+    });
+    setData(temp2);
   };
 
-  //   useEffect(()=>{
+  async function getData() {
+    let temp = await infoApi.fetchData();
+    filterData(temp);
+  }
 
-  //   const [data, setData] = useState('')
+  useEffect(() => {
+    getData();
+  }, []);
 
-  //   useEffect(() => {
-
-  //     const callData = async () => {
-  //       const data = await fetch('https://jsonplaceholder.typicode.com/todos/10').then(data => data.json())
-  //       setData(data)
-
-  //     }
-
-  //     callData()
-  //   }, [])
-
-  //   return (data === '' ? <>loading ... </> : <div>{data.title}</div>)
-
-  // }
-  //   },[])
-
+  const load = () => {
+    if (data === 1) {
+      return <Loading />;
+    } else {
+      return <Game det={data} />;
+    }
+  };
   return (
     <div className='app'>
-      <Header />
-      <Game data={data} />
-      <button onClick={resetData}>RESET</button>
+      <Header score={score} />
+      {load()}
       <Footer />
     </div>
   );

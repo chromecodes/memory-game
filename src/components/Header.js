@@ -1,7 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class Header extends Component {
-  render() {
-    return <div className='header'> PokeMemory</div>;
-  }
+export default function Header(props) {
+  const { score } = props;
+  return (
+    <div>
+      <>
+        <div className='header'>
+          <div className='title'>PokeMemory</div>
+          <div className='score'>{score}</div>
+        </div>
+      </>
+    </div>
+  );
 }

@@ -1,26 +1,40 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Game(props) {
-  console.log(props.data);
+  const { det } = props;
 
-  const { data } = props;
+  const [data, setData] = useState(det);
+  const [memory, updateMemory] = useState([]);
 
-  console.log(data);
-  const createCard = () => {
-    if (data === data[0]) {
-      data.forEach((datum) => {
-        <Card data={datum} />;
-      });
+  const creatCard = () => {
+    return shuffleArray(data).map((datum) => {
+      return <Card data={datum} key={datum.id} act={getMemory} />;
+    });
+  };
+
+  const shuffleArray = (array) => {
+    return array.sort(() => Math.random() - 0.5);
+  };
+
+  const getMemory = (v) => {
+    if (memory.includes(v)) {
+      console.log("over...");
+    } else {
+      updateMemory([...memory, v]);
+      console.log(memory);
     }
   };
 
   useEffect(() => {
-    createCard();
-  }, [data]);
+    setData(det);
+  }, [det]);
+
   return (
     <>
-      <div className='main'>{createCard()}</div>
+      <div className='main'>
+        <div className='cardCont'>{creatCard()}</div>
+      </div>
     </>
   );
 }
