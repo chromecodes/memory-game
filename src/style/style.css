@@ -129,7 +129,36 @@ textarea:focus {
   display: block;
 }
 /***   SET SECTION   ***/
+.loadTxt {
+  font-size: 32px;
+  font-weight: 600;
+}
 
+.ball {
+  width: 40px;
+  animation: pokeBall 0.9s linear infinite;
+  margin-left: 60px;
+}
+.blinks {
+  animation: blink 1s linear 0.1s infinite;
+}
+.blinkf {
+  animation: blink 1s linear infinite;
+}
+
+@keyframes pokeBall {
+  to {
+    transform: rotate(358deg);
+  }
+}
+@keyframes blink {
+  from {
+    color: var(--primary-color);
+  }
+  to {
+    color: var(--terinary-color);
+  }
+}
 /***   FORM SECTION   ***/
 
 /***   BIO SECTION   ***/

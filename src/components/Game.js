@@ -34,6 +34,8 @@ export default function Game(props) {
     <>
       <div className='main'>
         <div className='cardCont'>{creatCard()}</div>
+        <img src='./IMG/P1.png' alt='' srcset='' />
+        <img src='' alt='' srcset='./IMG/P1.png' />
       </div>
     </>
   );
