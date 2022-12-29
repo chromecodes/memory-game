@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./Card";
 
 export default function Game(props) {
-  const { det } = props;
+  const { det, scrUp, next, gmOvr } = props;
 
   const [data, setData] = useState(det);
   const [memory, updateMemory] = useState([]);
@@ -19,9 +19,11 @@ export default function Game(props) {
 
   const getMemory = (v) => {
     if (memory.includes(v)) {
+      gmOvr();
       console.log("over...");
     } else {
       updateMemory([...memory, v]);
+      scrUp();
       console.log(memory);
     }
   };
@@ -30,12 +32,16 @@ export default function Game(props) {
     setData(det);
   }, [det]);
 
+  useEffect(() => {
+    if (det.length === memory.length) {
+      next();
+    }
+  });
+
   return (
     <>
       <div className='main'>
         <div className='cardCont'>{creatCard()}</div>
-        <img src='./IMG/P1.png' alt='' srcset='' />
-        <img src='' alt='' srcset='./IMG/P1.png' />
       </div>
     </>
   );

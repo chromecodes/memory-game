@@ -13,11 +13,15 @@ export const infoApi = (() => {
     let val = 6;
 
     const lvlUp = () => {
-      val = val + 3;
+      if (limit.val <= 12) {
+        limit.val = limit.val + 3;
+      }
     };
 
     const lvlDown = () => {
-      val = val - 3;
+      if (limit.val >= 3) {
+        limit.val = limit.val - 3;
+      }
     };
 
     return { val, lvlUp, lvlDown };
@@ -39,7 +43,7 @@ export const infoApi = (() => {
 
     api.resetData();
     offset.resetVal();
-
+    console.log(limit.val);
     for (let i = 1; i <= limit.val; i++) {
       console.log(i);
       const temp = await P.getPokemonByName(offset.val + i);

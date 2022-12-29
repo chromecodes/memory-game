@@ -1,12 +1,10 @@
 import React from "react";
 
-export default function Header(props) {
-  const { score } = props;
+export default function Header() {
   return (
     <>
       <div className='header'>
         <div className='title'>PokeMemory</div>
-        <div className='score'>{score}</div>
       </div>
     </>
   );
