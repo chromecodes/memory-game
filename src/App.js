@@ -10,8 +10,11 @@ import Gameover from "./components/Gameover";
 function App() {
   const [data, setData] = useState(1);
   const [score, scoreUp] = useState(0);
-  const [best, bestUp] = useState(0);
+  const [best, bestUp] = useState(
+    !localStorage.getItem("best") ? 0 : JSON.parse(localStorage.getItem("best"))
+  );
   const [over, reset] = useState(false);
+  const [error, switchErr] = useState(false);
 
   const filterData = (dumps) => {
     let temp2 = [];
@@ -27,7 +30,11 @@ function App() {
 
   async function getData() {
     let temp = await infoApi.fetchData();
-    filterData(temp);
+    console.log(temp);
+    if (temp.length > 5) {
+      filterData(temp);
+    } else {
+    }
   }
 
   const scoreIncre = () => {
@@ -59,14 +66,17 @@ function App() {
   };
 
   const resetGame = () => {
+    infoApi.limit.lvlDown();
     reset(false);
     setData(1);
     getData();
+    scoreRct();
   };
   const nextLevel = () => {
     infoApi.limit.lvlUp();
-    console.log(infoApi.limit.val);
-    resetGame();
+    reset(false);
+    setData(1);
+    getData();
   };
 
   const gameOver = () => {
@@ -82,6 +92,10 @@ function App() {
       bestUp(score);
     }
   }, [score]);
+
+  useEffect(() => {
+    localStorage.setItem("best", JSON.stringify(best));
+  }, [best]);
 
   return (
     <div className='app'>

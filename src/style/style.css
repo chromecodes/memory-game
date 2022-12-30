@@ -51,12 +51,13 @@ button {
 .header {
   font-size: 24px;
   font-weight: 600;
-  height: 60px;
+  height: 50px;
   background-color: var(--secondary-bg-color);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-color);
+  border-bottom: 12px solid var(--terinary-bg-color);
 }
 
 /***   MAIN SECTION   ***/
@@ -79,9 +80,14 @@ button {
   gap: 30px;
   font-size: 18px;
   font-weight: 600;
-  padding-top: 30px;
+  padding-top: 20px;
 }
-
+.txt {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 20px;
+}
 .score {
   padding: 8px 16px;
   border: 2px solid var(--secondary-drgreen-accent);
@@ -198,6 +204,7 @@ img {
   padding: 10px 0px 4px 0px;
   font-size: 16px;
   text-align: center;
+  font-weight: 600;
 }
 .odin {
   color: inherit;
@@ -252,39 +259,22 @@ img {
   height: 100%;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   img {
-    width: 120px;
+    width: 100px;
+  }
+  .card {
+    width: 140px;
+  }
+  .pokeName {
+    font-size: 16px;
+  }
+  .ball {
+    width: 20px;
   }
 
-  .app {
-    flex-direction: column;
-  }
-  .preview,
-  .container {
-    width: 100%;
-  }
-  .tablist {
-    overflow: hidden;
-  }
-  .tabs {
-    padding: 4px 8px;
-  }
-  .skill-input {
-    width: 70%;
-  }
-  .pdf-btn {
-    font-size: 16px;
-    padding: 6px 12px;
-    font-weight: 400;
-  }
-  .controls {
-    padding-right: 30px;
-  }
-  .exp,
-  .edu {
-    display: flex;
-    flex-direction: column;
+  .loadTxt {
+    font-size: 28px;
   }
   .name,
   .contacts,
@@ -293,9 +283,72 @@ img {
     flex-direction: column;
     gap: 10px;
   }
+  .txt {
+    font-size: 20px;
+    padding-top: 20px;
+  }
+}
+@media (max-width: 480px) {
+  img {
+    width: 75px;
+  }
+  .card {
+    width: 105px;
+  }
+  .pokeName {
+    font-size: 14px;
+  }
+  .ball {
+    width: 15px;
+  }
+  .loadTxt {
+    font-size: 26px;
+  }
+  .scoreboard {
+    font-size: 18px;
+  }
+  .txt {
+    font-size: 18px;
+    padding-top: 15px;
+  }
+}
+@media (max-width: 400px) {
+  img {
+    width: 65px;
+  }
+  .card {
+    width: 85px;
+  }
+  .pokeName {
+    font-size: 12px;
+  }
+  .ball {
+    width: 12px;
+  }
+  .loadTxt {
+    font-size: 25px;
+  }
+  .scoreboard {
+    font-size: 16px;
+  }
 }
 @media (max-width: 340px) {
-  .tabs {
-    padding: 2px 4px;
+  img {
+    width: 50px;
+  }
+  .card {
+    width: 71px;
+  }
+  .pokeName {
+    font-size: 8px;
+  }
+  .ball {
+    width: 10px;
+  }
+  .loadTxt {
+    font-size: 24px;
+  }
+  .scoreboard {
+    font-size: 14px;
   }
 }

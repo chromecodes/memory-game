@@ -13,15 +13,13 @@ export const infoApi = (() => {
     let val = 6;
 
     const lvlUp = () => {
-      if (limit.val <= 12) {
+      if (limit.val < 12) {
         limit.val = limit.val + 3;
       }
     };
 
     const lvlDown = () => {
-      if (limit.val >= 3) {
-        limit.val = limit.val - 3;
-      }
+      limit.val = 6;
     };
 
     return { val, lvlUp, lvlDown };
@@ -44,10 +42,18 @@ export const infoApi = (() => {
     api.resetData();
     offset.resetVal();
     console.log(limit.val);
+
     for (let i = 1; i <= limit.val; i++) {
       console.log(i);
-      const temp = await P.getPokemonByName(offset.val + i);
-      api.data.push(temp);
+      try {
+        const temp = await P.getPokemonByName(offset.val + i);
+        api.data.push(temp);
+      } catch (error) {
+        console.log(error);
+        console.log({ code: error.name, message: error.message });
+
+        return error;
+      }
     }
     console.log(api.data);
     return api.data;
