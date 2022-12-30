@@ -14,7 +14,7 @@ function App() {
     !localStorage.getItem("best") ? 0 : JSON.parse(localStorage.getItem("best"))
   );
   const [over, reset] = useState(false);
-  const [error, switchErr] = useState(false);
+  const [error, switchErr] = useState({});
 
   const filterData = (dumps) => {
     let temp2 = [];
@@ -34,6 +34,7 @@ function App() {
     if (temp.length > 5) {
       filterData(temp);
     } else {
+      switchErr(temp);
     }
   }
 
@@ -50,7 +51,7 @@ function App() {
       return <Gameover resetGame={resetGame} />;
     } else {
       if (data === 1) {
-        return <Loading />;
+        return <Loading error={error} />;
       } else {
         return (
           <Game

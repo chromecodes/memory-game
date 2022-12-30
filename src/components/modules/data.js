@@ -50,9 +50,7 @@ export const infoApi = (() => {
         api.data.push(temp);
       } catch (error) {
         console.log(error);
-        console.log({ code: error.name, message: error.message });
-
-        return error;
+        return { code: error.name, message: error.message };
       }
     }
     console.log(api.data);
