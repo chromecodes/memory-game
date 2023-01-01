@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
+import { infoApi } from "./components/modules/data";
 import Game from "./components/Game";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { infoApi } from "./components/modules/data";
-import React, { useEffect, useState } from "react";
 import Loading from "./components/Loading";
 import Scoreboard from "./components/Scoreboard";
 import Gameover from "./components/Gameover";
@@ -30,7 +30,6 @@ function App() {
 
   async function getData() {
     let temp = await infoApi.fetchData();
-    console.log(temp);
     if (temp.length > 5) {
       filterData(temp);
     } else {
@@ -48,7 +47,7 @@ function App() {
 
   const load = () => {
     if (over === true) {
-      return <Gameover resetGame={resetGame} />;
+      return <Gameover score={score} resetGame={resetGame} />;
     } else {
       if (data === 1) {
         return <Loading error={error} />;

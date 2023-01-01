@@ -20,11 +20,9 @@ export default function Game(props) {
   const getMemory = (v) => {
     if (memory.includes(v)) {
       gmOvr();
-      console.log("over...");
     } else {
       updateMemory([...memory, v]);
       scrUp();
-      console.log(memory);
     }
   };
 
